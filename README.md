@@ -5,7 +5,8 @@ customizable slide rules in the browser.
 
 ## Usage
 
-See example.html for a working example. The API is roughly as follows: 
+See example.html for a working example (you can find that
+[here](https://isaachodes.io/sliderule)). The API is roughly as follows:
 
 ```javascript
 const slideRule = new SlideRule('container-id', {
