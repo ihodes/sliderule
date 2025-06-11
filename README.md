@@ -1,8 +1,11 @@
-# Slide Rule Library
+# sliderule.js
 
-A JavaScript library for creating interactive, customizable slide rules in the browser.
+A very simple, no dependencies, JavaScript library for creating interactive,
+customizable slide rules in the browser.
 
 ## Usage
+
+See example.html for a working example. The API is roughly as follows: 
 
 ```javascript
 const slideRule = new SlideRule('container-id', {
