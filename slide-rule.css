@@ -1,15 +1,7 @@
-body {
-    font-family: Georgia, serif;
-    background-color: #f5f2e8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+/* Slide Rule Library Styles */
 
-/* Body: The main frame containing upper stator, slide, and lower stator */
-#body {
+/* Container */
+#sr-body {
     position: relative;
     user-select: none;
     -webkit-user-select: none;
@@ -17,16 +9,15 @@ body {
     -ms-user-select: none;
 }
 
-/* Upper stator: Top fixed part of the body */
-#upper-stator {
+/* Components */
+#sr-upper-stator {
     background-color: #e8dcc0;
     border: 2px solid #a0896d;
     border-radius: 4px 4px 0 0;
     position: relative;
 }
 
-/* Slide: The movable middle section */
-#slide {
+#sr-slide {
     position: relative;
     cursor: grab;
     background-color: #fdfaf0;
@@ -35,19 +26,19 @@ body {
     z-index: 10;
 }
 
-#slide:active {
+#sr-slide:active {
     cursor: grabbing;
 }
 
-/* Lower stator: Bottom fixed part of the body */
-#lower-stator {
+#sr-lower-stator {
     background-color: #e8dcc0;
     border: 2px solid #a0896d;
     border-radius: 0 0 4px 4px;
     position: relative;
 }
 
-canvas {
+/* Canvas elements */
+#sr-body canvas {
     display: block;
     position: absolute;
     top: 0;
@@ -57,32 +48,40 @@ canvas {
     image-rendering: crisp-edges;
 }
 
-.scale-label {
+/* Scale labels */
+.sr-scale-label {
     position: absolute;
     font-size: 16px;
     font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
     color: #5a4a3a;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    left: 5px;
+    left: 35px; /* Position after secondary label */
 }
 
-.scale-label-top {
+.sr-scale-label-top {
     top: 5px;
 }
 
-.scale-label-bottom {
+.sr-scale-label-bottom {
     bottom: 5px;
 }
 
-/* Cursor: The transparent sliding indicator */
-#cursor {
+/* Secondary labels */
+.sr-secondary-label {
+    font-size: 14px;
+    opacity: 0.8;
+    left: 5px; /* Position on the left side */
+}
+
+/* Cursor */
+#sr-cursor {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 96px;
     cursor: ew-resize;
     z-index: 20;
     background: linear-gradient(to right, 
@@ -99,8 +98,8 @@ canvas {
         0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Hairline: The thin red line in the center of the cursor */
-#cursor::before {
+/* Hairline */
+#sr-cursor::before {
     content: '';
     position: absolute;
     left: 50%;
@@ -112,8 +111,8 @@ canvas {
     box-shadow: 0 0 1px rgba(204, 0, 0, 0.5);
 }
 
-/* Developer mode display */
-#cursor-values {
+/* Developer mode values */
+#sr-cursor-values {
     position: absolute;
     bottom: 100%;
     left: 50%;
@@ -130,62 +129,21 @@ canvas {
     display: none;
 }
 
-body.dev-mode #cursor-values {
+.sr-dev-mode #sr-cursor-values {
     display: block;
 }
 
-#cursor-values .scale-value {
+#sr-cursor-values .sr-scale-value {
     display: block;
     margin: 2px 0;
 }
 
-#cursor-values .scale-name {
+#sr-cursor-values .sr-scale-name {
     font-weight: bold;
     color: #333;
 }
 
-/* Developer mode toggle button */
-#dev-toggle {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #999;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    z-index: 100;
-}
-
-#dev-toggle:hover {
-    background-color: #e0e0e0;
-}
-
-/* Reset button */
-#reset-button {
-    position: fixed;
-    top: 40px;
-    right: 10px;
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #999;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    z-index: 100;
-    display: none;
-}
-
-body.dev-mode #reset-button {
-    display: block;
-}
-
-#reset-button:hover {
-    background-color: #e0e0e0;
-}
-
 /* Animation for slide reset */
-#slide.resetting {
+#sr-slide.resetting {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
